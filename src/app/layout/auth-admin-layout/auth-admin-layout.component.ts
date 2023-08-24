@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthadminService } from 'src/app/views/services/authadmin.service';
 
 @Component({
@@ -7,14 +7,21 @@ import { AuthadminService } from 'src/app/views/services/authadmin.service';
   templateUrl: './auth-admin-layout.component.html',
   styleUrls: ['./auth-admin-layout.component.css']
 })
-export class AuthAdminLayoutComponent {
+export class AuthAdminLayoutComponent implements OnInit {
 
   dataReceived: any
+  url: any
 
-  constructor(private ads: AuthadminService, private route: Router){
+  constructor(private ads: AuthadminService, private route: Router,
+    private arouter: ActivatedRoute){
 
     // console.log(this.ads.isLogin)
 
+  }
+
+  ngOnInit(): void {
+      this.url = this.arouter.snapshot.queryParams['returnUrl'] || '/admin/'
+      // console.log(this.url);
   }
 
   loginadmin(f: any){
@@ -32,7 +39,7 @@ export class AuthAdminLayoutComponent {
           // console.log(this.dataReceived)
           // console.log(this.ads.profileAdmin.username)
           // console.log(this.ads.profileAdmin.role)
-          this.route.navigate(['/admin/dashboard'])
+          this.route.navigate([this.url])
 
       },
       err => console.log(err)

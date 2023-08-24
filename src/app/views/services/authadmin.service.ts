@@ -51,10 +51,16 @@ export class AuthadminService {
 
   loggedIn(){
     let token: any = localStorage.getItem('token')
-    let decodeToken = this.helper.decodeToken(token)
-    let role = decodeToken.role
 
-      if(role! == 'Admin'){
+    // let role = decodeToken.role
+
+      if(!token){
+        return false
+      }
+
+      let decodeToken = this.helper.decodeToken(token)
+
+      if(decodeToken.role !== 'Admin'){
         return false
       }
 
