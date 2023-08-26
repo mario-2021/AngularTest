@@ -11,6 +11,7 @@ export class AuthAdminLayoutComponent implements OnInit {
 
   dataReceived: any
   url: any
+  messageAuthError: any
 
   constructor(private ads: AuthadminService, private route: Router,
     private arouter: ActivatedRoute){
@@ -42,7 +43,7 @@ export class AuthAdminLayoutComponent implements OnInit {
           this.route.navigate([this.url])
 
       },
-      err => console.log(err)
+      err => this.messageAuthError = "Invalid Email or Password"
     )
 
   }

@@ -38,6 +38,9 @@
                                       Me</label>
                               </div>
                           </div>
+                          <div class="alert alert-danger" *ngIf="messageAuthError">
+                            {{ messageAuthError }}
+                          </div>
                           <a routerLink="/admin/loginAdmin"
                           class="btn btn-primary btn-user btn-block">
                               Login
