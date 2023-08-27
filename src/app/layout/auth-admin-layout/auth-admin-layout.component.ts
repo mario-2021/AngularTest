@@ -18,6 +18,10 @@ export class AuthAdminLayoutComponent implements OnInit {
 
     // console.log(this.ads.isLogin)
 
+    if(this.ads.loggedIn() == true) {
+      this.route.navigate(['/admin'])
+    }
+
   }
 
   ngOnInit(): void {

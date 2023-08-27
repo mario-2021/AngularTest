@@ -8,11 +8,15 @@ import { GuardAdminGuard } from './views/guards/guard-admin.guard';
 const routes: Routes = [
   { path: '', component: FrontLayoutComponent, children: [
     { path: '', loadChildren: () =>
-  import('./views/front/home/home.module').then(m => m.HomeModule) },
+    import('./views/front/home/home.module').then(m => m.HomeModule) },
     { path: 'loginUser', loadChildren: () =>
-import('./views/front/login-user/login-user.module').then(m => m.LoginUserModule) },
+    import('./views/front/login-user/login-user.module').then(m => m.LoginUserModule) },
     { path: 'registerUser', loadChildren: () =>
-  import('./views/front/register-user/register-user.module').then(m => m.RegisterUserModule) }
+    import('./views/front/register-user/register-user.module').then(m => m.RegisterUserModule) },
+    { path: 'student', loadChildren: () =>
+    import('./views/front/student/student.module').then(m =>m.StudentModule) },
+    { path: 'studentdetails/:id', loadChildren: () =>
+    import('./views/front/studentdetails/studentdetails.module').then(m =>m.StudentdetailsModule) }
   ] },
 
   { path: 'admin', component: AdminLayoutComponent, canActivate: [GuardAdminGuard], children: [
