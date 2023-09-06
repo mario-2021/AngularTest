@@ -4,6 +4,7 @@ import { FrontLayoutComponent } from './layout/front-layout/front-layout.compone
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { AuthAdminLayoutComponent } from './layout/auth-admin-layout/auth-admin-layout.component';
 import { GuardAdminGuard } from './views/guards/guard-admin.guard';
+import { GuardUserGuard } from './views/guards/guard-user.guard';
 
 const routes: Routes = [
   { path: '', component: FrontLayoutComponent, children: [
@@ -15,8 +16,12 @@ const routes: Routes = [
     import('./views/front/register-user/register-user.module').then(m => m.RegisterUserModule) },
     { path: 'student', loadChildren: () =>
     import('./views/front/student/student.module').then(m =>m.StudentModule) },
+    // { path: 'student', loadChildren: () =>
+    // import('./views/front/student/student.module').then(m =>m.StudentModule), canActivateChild:[GuardUserGuard] },
     { path: 'studentdetails/:id', loadChildren: () =>
     import('./views/front/studentdetails/studentdetails.module').then(m =>m.StudentdetailsModule) }
+    // { path: 'studentdetails/:id', loadChildren: () =>
+    // import('./views/front/studentdetails/studentdetails.module').then(m =>m.StudentdetailsModule), canActivateChild:[GuardUserGuard] }
   ] },
 
   { path: 'admin', component: AdminLayoutComponent, canActivate: [GuardAdminGuard], children: [

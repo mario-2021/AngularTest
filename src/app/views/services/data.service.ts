@@ -6,17 +6,17 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-  // token: any = localStorage.getItem('token')
-  // headerAdmin = new HttpHeaders()
-  // .set('authorization', this.token)
-  // .set('role', 'Admin')
+  token: any = localStorage.getItem('token')
+  headerAdmin = new HttpHeaders()
+  .set('authorization', this.token)
+  .set('role', 'Admin')
 
-  // params = new HttpParams()
-  // .set('secret', 'MeroSH')
-  // .set('client', '23789')
+  params = new HttpParams()
+  .set('secret', 'MeroSH')
+  .set('client', '23789')
 
-  // headerAll = new HttpHeaders()
-  // .set('authorization', this.token)
+  headerAll = new HttpHeaders()
+  .set('authorization', this.token)
 
   constructor(private http: HttpClient) { }
 

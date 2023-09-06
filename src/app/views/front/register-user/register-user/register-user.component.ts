@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthuserService } from 'src/app/views/services/authuser.service';
@@ -9,6 +10,8 @@ import { AuthuserService } from 'src/app/views/services/authuser.service';
 })
 export class RegisterUserComponent {
 
+  messageError: any
+
   constructor(private aus: AuthuserService, private router: Router){
 
   }
@@ -16,8 +19,11 @@ export class RegisterUserComponent {
   register(f: any){
     let data = f.value
     this.aus.register(data).subscribe(data => {
-        this.router.navigate(['/login'])
+        this.router.navigate(['/loginUser'])
         // console.log(data)
+      }, (err:HttpErrorResponse) => {
+        console.log(err);
+        this.messageError = err.error.error
       }
     )
   }

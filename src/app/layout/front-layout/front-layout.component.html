@@ -6,12 +6,19 @@
     <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
   </div>
   <div class="w3-bar-block">
-    <a routerLink="/admin/dashboard" class="w3-bar-item w3-button w3-hover-white">Admin</a>
+    <a routerLink="/admin/dashboard" class="w3-bar-item w3-button w3-hover-white">
+      Admin</a>
     <a routerLink="/" class="w3-bar-item w3-button w3-hover-white">Home</a>
-    <a routerLink="/loginUser" class="w3-bar-item w3-button w3-hover-white">Login</a>
-    <a routerLink="/registerUser" class="w3-bar-item w3-button w3-hover-white">Register</a>
-    <a routerLink="/student" class="w3-bar-item w3-button w3-hover-white">Student</a>
-    <a href="#" class="w3-bar-item w3-button w3-hover-white">Logout</a>
+    <a routerLink="/loginUser" class="w3-bar-item w3-button w3-hover-white"
+    *ngIf="!au.userLoggedIn()">Login</a>
+    <!-- <a routerLink="/loginUser" class="w3-bar-item w3-button w3-hover-white"
+    *ngIf="!verIfUser">Login</a> -->
+    <a routerLink="/registerUser" class="w3-bar-item w3-button w3-hover-white"
+    *ngIf="!au.userLoggedIn()">Register</a>
+    <a routerLink="/student" class="w3-bar-item w3-button w3-hover-white"
+    *ngIf="!au.userLoggedIn()">Student</a>
+    <a (click)="logout()" class="w3-bar-item w3-button w3-hover-white"
+    *ngIf="!au.userLoggedIn()">Logout</a>
   </div>
 </nav>
 
